@@ -54,11 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container.cs" />
+    <Compile Include="Interceptors\MeasurableAsync.cs" />
     <Compile Include="Interceptors\Measure.cs" />
-    <Compile Include="IProcessor.cs" />
+    <Compile Include="Processors\IProcessor.cs" />
     <Compile Include="Interceptors\Logger.cs" />
     <Compile Include="Interceptors\Measurable.cs" />
-    <Compile Include="Processor.cs" />
+    <Compile Include="Processors\IProcessorAsync.cs" />
+    <Compile Include="Processors\Processor.cs" />
+    <Compile Include="Processors\ProcessorAsync.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

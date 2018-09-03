@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using System;
+using System.Threading.Tasks;
 
 namespace InterceptorsExample
 {
@@ -9,9 +10,15 @@ namespace InterceptorsExample
         {
             var container = Container.Build();
 
-            var processor = container.Resolve<IProcessor>();
+            //var processor = container.Resolve<IProcessor>();
+            //processor.Process();
 
-            processor.Process();
+            var processor = container.Resolve<IProcessorAsync>();
+
+            Task.Run(async () =>
+            {
+                await processor.Process();
+            });
 
             Console.ReadKey();
         }

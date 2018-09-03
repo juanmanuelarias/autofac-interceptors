@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Container.cs" />
+    <Compile Include="Extensions\InvocationExtensions.cs" />
     <Compile Include="Interceptors\MeasurableAsync.cs" />
     <Compile Include="Interceptors\Measure.cs" />
     <Compile Include="Processors\IProcessor.cs" />

@@ -8,7 +8,7 @@ namespace InterceptorsExample
     [Intercept(typeof(MeasurableAsync))]
     public class ProcessorAsync : IProcessorAsync
     {
-        [Measure]
+        [Measure(MetricName = Metrics.TimeToExecute)]
         public async Task Process()
         {
             await Task.Delay(1234);

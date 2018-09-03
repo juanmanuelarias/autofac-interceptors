@@ -13,11 +13,10 @@ namespace InterceptorsExample
             //var processor = container.Resolve<IProcessor>();
             //processor.Process();
 
-            var processor = container.Resolve<IProcessorAsync>();
-
+            var processorAsync = container.Resolve<IProcessorAsync>();
             Task.Run(async () =>
             {
-                await processor.Process();
+                await processorAsync.Process();
             });
 
             Console.ReadKey();

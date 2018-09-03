@@ -9,11 +9,16 @@ namespace InterceptorsExample
     [Intercept(typeof(Measurable))]
     public class Processor : IProcessor
     {
-        [Measure]
+        [Measure(MetricName = Metrics.TimeToExecute)]
         public void Process()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(1234);
             Console.WriteLine("Execution");
         }
+    }
+
+    public class Metrics
+    {
+        public const string TimeToExecute = "InterceptorsExample.Process.TimeToExecute";
     }
 }

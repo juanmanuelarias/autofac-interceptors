@@ -10,13 +10,13 @@ namespace InterceptorsExample.Interceptors
     {
         public void Intercept(IInvocation invocation)
         {
-            if (!invocation
-                .MethodInvocationTarget
-                .CustomAttributes
-                .Any(a => a.AttributeType == typeof(Measure)))
+            var attribute = invocation.GetAttribute<Measure>();
+            if (attribute == null)
             {
                 return;
             }
+
+            var metricName = attribute.GetValue(nameof(Measure.MetricName));
 
             var stopwatch = new Stopwatch();
 
@@ -27,7 +27,7 @@ namespace InterceptorsExample.Interceptors
             returnValue.ContinueWith(t =>
             {
                 stopwatch.Stop();
-                Console.WriteLine($"Took: {stopwatch.ElapsedMilliseconds}");
+                Console.WriteLine($"{metricName}: {stopwatch.ElapsedMilliseconds}");
             });
         }
     }

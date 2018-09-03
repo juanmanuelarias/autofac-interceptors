@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Autofac;
+using System;
 
 namespace InterceptorsExample
 {
@@ -10,6 +7,13 @@ namespace InterceptorsExample
     {
         static void Main(string[] args)
         {
+            var container = Container.Build();
+
+            var processor = container.Resolve<IProcessor>();
+
+            processor.Process();
+
+            Console.ReadKey();
         }
     }
 }
